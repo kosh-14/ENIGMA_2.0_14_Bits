@@ -2,4 +2,4 @@
 export const API_URL =
   window.location.hostname === "localhost"
     ? "http://localhost:3000/api" // Local development
-    : "/api"; // Production (Vercel)
+    : "https://enigma-2-0-14-bits.vercel.app/api"; // Production - YOUR ACTUAL VERCEL URL
