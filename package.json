@@ -1,0 +1,13 @@
+{
+  "name": "Flood-Twin",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "concurrently \"cd server && npm run dev\" \"cd client && npm start\"",
+    "build": "cd client && npm install && npm run build",
+    "start": "cd server && node server.js"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}

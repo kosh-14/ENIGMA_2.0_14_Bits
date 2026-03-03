@@ -3,6 +3,7 @@ import WhatIfSimulator from "./components/WhatIfSimulator/WhatIfSimulator";
 import CesiumGlobe from "./components/CesiumGlobe/CesiumGlobe";
 import LoadingOverlay from "./components/Shared/LoadingOverlay";
 import "./styles/App.css";
+import { API_URL } from "./config"; 
 
 function App() {
   const [activeSection, setActiveSection] = useState("simulator");
@@ -22,18 +23,16 @@ function App() {
 
   const fetchGlobalRiskData = async () => {
     try {
-      const response = await fetch(
-        "http://localhost:3000/api/global-risk-data",
-      );
+      const response = await fetch(`${API_URL}/global-risk-data`);
       const data = await response.json();
       if (data.success) {
         setGlobalRiskData(data.data);
         setLastUpdate(new Date());
+        setIsLive(true);
       }
     } catch (error) {
       console.error("Failed to fetch global risk data:", error);
-    } finally {
-      setLoading(false);
+      setIsLive(false);
     }
   };
 

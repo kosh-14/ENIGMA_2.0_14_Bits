@@ -788,3 +788,13 @@ app.listen(PORT, () => {
   console.log("   GET  /api/global-risk-data");
   console.log("   GET  /api/region-risk/:lat/:lon/:radius");
 });
+
+// Export for Vercel serverless
+module.exports = app;
+
+if (process.env.NODE_ENV !== "production") {
+  const PORT = process.env.PORT || 3000;
+  app.listen(PORT, () => {
+    console.log(`🚀 Server running locally on port ${PORT}`);
+  });
+}

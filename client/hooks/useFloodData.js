@@ -1,7 +1,7 @@
-import { useState, useEffect } from "react";
+// client/src/hooks/useFloodData.js
+import { useState } from "react";
 import axios from "axios";
-
-const API_URL = "http://localhost:3000/api";
+import { API_URL } from "../config"; // ← ADD THIS LINE AT THE TOP
 
 export const useFloodData = (bbox) => {
   const [data, setData] = useState(null);
@@ -11,6 +11,10 @@ export const useFloodData = (bbox) => {
   const analyzeFlood = async (customBbox) => {
     try {
       setLoading(true);
+      // REPLACE this line:
+      // const response = await axios.post(`http://localhost:3000/api/flood-analysis`, {
+
+      // WITH this line:
       const response = await axios.post(`${API_URL}/flood-analysis`, {
         bbox: customBbox || bbox,
       });
